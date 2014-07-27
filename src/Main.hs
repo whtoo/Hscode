@@ -16,6 +16,12 @@ insertsort2 :: Ord a => [a] -> [a]
 insertsort2 [] = []
 insertsort2 (x:xs) = insert x (insertsort2 xs)
 
-
+swapall2 :: Ord a => [a] -> [a]
+swapall2 [] = []
+swapall2 [x] = [x]
+swapall2 (x1:x2:xs) | x1 > x2 = x2 : swapall2(x1:xs)
+                    | otherwise = x1 : swapall2(x2:xs)
+                    
+                    
 main::IO()
 main = putStrLn "Hi,my lamd"

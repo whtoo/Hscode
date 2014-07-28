@@ -13,8 +13,7 @@ insert x (y:ys) | x < y = x:y:ys
                 | otherwise = y:insert x ys
                 
 insertsort2 :: Ord a => [a] -> [a]
-insertsort2 [] = []
-insertsort2 (x:xs) = insert x (insertsort2 xs)
+insertsort2 xs = foldr insert [] xs
 
 swapall2 :: Ord a => [a] -> [a]
 swapall2 [] = []

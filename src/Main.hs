@@ -39,6 +39,12 @@ selectsort [] = []
 selectsort xs = selected : selectsort restlst
                 where selected = minimum xs
                       restlst = delForSort selected xs
+                      
+quicksort' :: Ord a => [a] -> [a]
+quicksort' [] = []                     
+quicksort' (x:xs) =  quicksort' minVal ++ [x]++ quicksort' maxVal
+                where minVal = filter (<x) xs
+                      maxVal = filter (>=x) xs
                  
 main::IO()
 main = putStrLn "Hi,my lamd"

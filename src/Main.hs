@@ -45,6 +45,13 @@ quicksort' [] = []
 quicksort' (x:xs) =  quicksort' minVal ++ [x]++ quicksort' maxVal
                 where minVal = filter (<x) xs
                       maxVal = filter (>=x) xs
-                 
+
+merge1 :: Ord a => [a] -> [a] -> [a]
+merge1 [] xs = xs
+merge1 ys [] = ys 
+merge1 (y:ys) (x:xs) | y < x = y : merge1 ys (x:xs)
+                     | otherwise = x : merge1 (y:ys) xs   
+
+                          
 main::IO()
 main = putStrLn "Hi,my lamd"

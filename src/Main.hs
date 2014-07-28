@@ -22,6 +22,14 @@ swapall2 [x] = [x]
 swapall2 (x1:x2:xs) | x1 > x2 = x2 : swapall2(x1:xs)
                     | otherwise = x1 : swapall2(x2:xs)
                     
-                    
+swapSort :: Ord a => [a] -> [a]
+swapSort [] = []
+swapSort xs = swapSort restlst ++ [lastItem]
+                where tmplst = swapall2 xs
+                      restlst = init tmplst
+                      lastItem = last tmplst
+
+
+                 
 main::IO()
 main = putStrLn "Hi,my lamd"

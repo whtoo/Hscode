@@ -52,6 +52,13 @@ merge1 ys [] = ys
 merge1 (y:ys) (x:xs) | y < x = y : merge1 ys (x:xs)
                      | otherwise = x : merge1 (y:ys) xs   
 
-                          
+msort :: Ord a => [a] -> [a]
+msort [] = []
+msort [x] = [x]
+msort xs = merge1 (msort x1) (msort x2)
+        where (x1,x2) = halfv xs
+              halfv tmp = (take l tmp,drop l tmp)
+              l = length xs `div` 2
+                         
 main::IO()
 main = putStrLn "Hi,my lamd"

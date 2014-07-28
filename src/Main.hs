@@ -28,8 +28,17 @@ swapSort xs = swapSort restlst ++ [lastItem]
                 where tmplst = swapall2 xs
                       restlst = init tmplst
                       lastItem = last tmplst
+                      
+delForSort :: Ord a =>a -> [a] -> [a]
+delForSort _ [] = []                      
+delForSort key (x:xs) | key == x = xs
+                         | otherwise = x : delForSort key xs
 
-
+selectsort :: Ord a => [a]-> [a]
+selectsort [] = []
+selectsort xs = selected : selectsort restlst
+                where selected = minimum xs
+                      restlst = delForSort selected xs
                  
 main::IO()
 main = putStrLn "Hi,my lamd"
